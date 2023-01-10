@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -144,8 +143,6 @@ func (e *Embed) SendToWebhook(Webhook string) error {
 	if marshalErr != nil {
 		return marshalErr
 	}
-
-	fmt.Print(bytes.NewBuffer(embed))
 
 	_, postErr := http.Post(Webhook, "application/json", bytes.NewBuffer(embed))
 	if postErr != nil {
